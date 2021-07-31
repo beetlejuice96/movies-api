@@ -22,17 +22,17 @@ const moviesApi = (app) => {
       const movies = await Promise.resolve(moviesMock[0]);
       res.status(200).json({
         data: movies,
-        message: 'movie retrieve',
+        message: 'movie retrieved',
       });
     } catch (error) {
       next(error);
     }
   });
 
-  router.post('/:movieId', async (req, res, next) => {
+  router.post('/', async (req, res, next) => {
     try {
       const createMovieId = await Promise.resolve(moviesMock[0].id);
-      res.status(200).json({
+      res.status(201).json({
         data: createMovieId,
         message: 'movies created',
       });
@@ -50,6 +50,19 @@ const moviesApi = (app) => {
       });
     } catch (error) {
       next(error);
+    }
+  });
+
+  router.delete('/:movieId', async function (req, res, next) {
+    try {
+      const deletedMovieId = await Promise.resolve(moviesMock[0].id);
+
+      res.status(200).json({
+        data: deletedMovieId,
+        message: 'movie deleted',
+      });
+    } catch (err) {
+      next(err);
     }
   });
 };
