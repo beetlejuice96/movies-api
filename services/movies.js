@@ -14,21 +14,21 @@ class MoviesService {
   }
 
   async getMovie({movieId}) {
-    const movies = await this.MongoDB.get(this.collection,movieId)
+    const movie = await this.MongoDB.get(this.collection,movieId)
     return movie || {};
   }
 
   async createMovie({movie}) {
-    const createMovieId = await this.MongoDB(this.collection,movie)
+    const createMovieId = await this.MongoDB.create(this.collection,movie)
     return createMovieId;
   }
 
   async updatedMovie({movieId,movie}={}) {
-    const updatedMovieId = await this.MongoDB(this.collection,movieId,movie)
+    const updatedMovieId = await this.MongoDB.update(this.collection,movieId,movie)
   }
 
-  async deleteMovie(movieId) {
-    const deleteMovieId = await this.MongoDB(this.collection,movieId)
+  async deleteMovie({movieId}) {
+    const deleteMovieId = await this.MongoDB.delete(this.collection,movieId)
     return deleteMovieId;
   }
 

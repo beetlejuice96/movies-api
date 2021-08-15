@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 const { config } = require('./config/index');
 
 const moviesApi = require('./routes/movies');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+//middleware de body parser
+app.use(express.json());
 
 moviesApi(app);
 

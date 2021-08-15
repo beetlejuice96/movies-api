@@ -22,7 +22,7 @@ const moviesApi = (app) => {
   router.get('/:movieId', async (req, res, next) => {
     const { movieId } = req.params;
     try {
-      const movies = await moviesService.getMovies({ movieId });
+      const movies = await moviesService.getMovie({ movieId });
       res.status(200).json({
         data: movies,
         message: 'movie retrieved',
