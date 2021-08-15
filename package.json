@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DEBUG=app:* nodemon index",
+    "dev": "DEBUG=app:* NODE_ENV=development nodemon index",
     "start": "NODE_ENV=production node index",
     "prepare": "husky install"
   },
@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
+    "dotenv-flow": "^3.2.0",
     "express": "^4.17.1",
     "mongodb": "^4.1.0"
   },

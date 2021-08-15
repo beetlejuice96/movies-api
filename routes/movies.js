@@ -34,7 +34,6 @@ const moviesApi = (app) => {
 
   router.post('/', async function (req, res, next) {
     const { body: movie } = req;
-    console.log(req.body);
     try {
       const createMovieId = await moviesService.createMovie({ movie });
       res.status(201).json({
@@ -49,7 +48,6 @@ const moviesApi = (app) => {
   router.put('/:movieId', async (req, res, next) => {
     const { movieId } = req.params;
     const { body: movie } = req;
-    console.log(req.body);
     try {
       const updatedMovieId = await moviesService.updatedMovie({
         movieId,

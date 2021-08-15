@@ -33,11 +33,9 @@ class MoviesService {
   }
 
   async patchMovie(patchedMovie) {
-    console.log(patchedMovie);
     const { movie: newMovie } = patchedMovie;
     let movie = moviesMock[0];
     let movieAux = { ...movie, ...newMovie };
-    console.log(movieAux);
     const patchMovieId = await Promise.resolve(movieAux);
     return patchMovieId;
   }
