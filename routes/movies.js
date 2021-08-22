@@ -6,7 +6,7 @@ const {
   movieIdSchema,
   createMovieSchema,
   updateMovieSchema,
-} = require('../utils/shcemas/movie');
+} = require('../utils/schemas/movie');
 
 const moviesApi = (app) => {
   const router = express.Router();
@@ -18,7 +18,6 @@ const moviesApi = (app) => {
     const { tags } = req.query;
     try {
       const movies = await moviesService.getMovies({ tags });
-      throw new Error('error getting movies');
       res.status(200).json({
         data: movies,
         message: 'movies listed',
