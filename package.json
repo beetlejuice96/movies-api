@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "set NODE_ENV=development && mocha --exit",
-    "dev": "DEBUG=app:* NODE_ENV=development nodemon index",
+    "dev": "DEBUG=express:*,app:* NODE_ENV=development nodemon index",
     "start": "NODE_ENV=production node index",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cover":"nyc npm run test",
+    "report":"nyc report --reporter=html && open coverage/index.html",
+    "inspect":"DEBUG=express:*,app:* nodemon --inspect index"
   },
   "keywords": [],
   "author": "",
@@ -50,5 +53,9 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
+  },
+  "nyc":{
+    "all":true,
+    "include":["routes,services","lib","utils"]
   }
 }
